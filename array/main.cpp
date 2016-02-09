@@ -14,8 +14,6 @@ using std::endl;
 int main()
 {
 
-
-
     float max, sum, a, b;
     int N;
 
@@ -45,6 +43,7 @@ int main()
     //находим сумму
     int n = 0;
     sum = 0;
+    int k=0;
     while (arr[n] > n && n < N){
         sum = sum + arr[n];
         n++;
@@ -59,9 +58,19 @@ int main()
                  int h = arr[j];
                  arr[j] = arr[j+1];
                  arr[j+1] = h;
+
              }
          }
      }
+
+
+    // замена нулями
+    for (int i = 0; i < N; i++)
+        if (fabs(arr[i]) >= a && fabs(arr[i]) <= b) k++;
+
+
+    for (int i = 0; i <= k; i++)
+        arr[N-i] = 0;
 
     //вывод массива
     for (int i = 0; i < N; ++i) {
