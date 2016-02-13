@@ -43,8 +43,8 @@ int main()
     //находим сумму
     int n = 0;
     sum = 0;
-    int k=0;
-    while (arr[n] > n && n < N){
+    int k=0;                        // **************  зачем здесь нужна переменная k?
+    while (arr[n] > n && n < N){     // **************  зачем  arr[n] > n?
         sum = sum + arr[n];
         n++;
     }
@@ -55,16 +55,24 @@ int main()
     for (int i = 0; i < N - 1; i++) {
          for (int j = 0; j < N - i - 1; j++) {
              if (fabs(arr[j]) >= a && fabs(arr[j]) <= b) {
-                 int h = arr[j];
+                 int h = arr[j];        // ***************** почему int?
                  arr[j] = arr[j+1];
                  arr[j+1] = h;
 
              }
          }
      }
+// ********************* переделай смещение эл-тов (представлен псевдо-код)
+	 k = 0;
+	for i = N - 1 .... 0
+		if (fabs(arr[i]) >= a && fabs(arr[i]) <= b) {
+			for  j = i ...  N - 1 - k
+				swap arr[j], arr[j+1]
+			k++;
+		}
+// ********************** конец		
 
-
-    // замена нулями
+    // замена нулями  // *************** не нужно
     for (int i = 0; i < N; i++)
         if (fabs(arr[i]) >= a && fabs(arr[i]) <= b) k++;
 
